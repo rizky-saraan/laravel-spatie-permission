@@ -6,7 +6,7 @@
                     <a href="{{ route('admin.roles.index') }}"
                         class="px-4 py-2 bg-green-700 hover:bg-green-500 rounded-md text-white">List Roles</a>
                 </div>
-                <div class="flex flex-col">
+                <div class="flex flex-col p-2 bg-slate-200">
                     <div class="mt-5 md:col-span-2 md:mt-0">
                         <form action="{{ route('admin.roles.update', $role) }}" method="POST">
                             @csrf
@@ -35,12 +35,13 @@
                         </form>
                     </div>
                 </div>
-                <div class="mt-6 p-2">
+                <div class="mt-6 p-2 bg-slate-200">
                     <h2 class="text-2xl font-semibold">Role Permissions</h2>
                     <div class="flex space-x-2 mt-2 p-2">
                         @if ($role->permissions)
                             @foreach ($role->permissions as $role_permission)
-                                <form class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md" method="POST"
+                                <form class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md text-xs"
+                                    method="POST"
                                     action="{{ route('admin.roles.permissions.revoke', [$role, $role_permission]) }}"
                                     onsubmit="return confirm('Are you sure?');">
                                     @csrf
@@ -50,11 +51,11 @@
                             @endforeach
                         @endif
                     </div>
-                    <div class="max-w-xl">
+                    <div class="w-full">
                         <form action="{{ route('admin.roles.permissions', $role) }}" method="POST">
                             @csrf
-                            <div class="overflow-hidden shadow sm:rounded-md">
-                                <div class="bg-white px-4 py-5 sm:p-6">
+                            <div class="overflow-hidden shadow sm:rounded-lg">
+                                <div class="bg-white px-4 py-5 sm:p-6 w-full">
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="permission"
