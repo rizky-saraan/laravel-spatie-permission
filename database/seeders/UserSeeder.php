@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class AdminSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,14 +16,14 @@ class AdminSeeder extends Seeder
     public function run()
     {
         //insert data user ke table user
-        $userAdmin = User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
 
         // role writer dan admin diberikan akses ke model user
-        $userAdmin->assignRole('writer', 'admin');
+        $user->assignRole('user');
     }
 }
