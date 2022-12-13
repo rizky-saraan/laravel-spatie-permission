@@ -6,7 +6,7 @@
                     <a href="{{ route('admin.permissions.index') }}"
                         class="px-4 py-2 bg-green-700 hover:bg-green-500 rounded-md text-white">List permissions</a>
                 </div>
-                <div class="flex flex-col">
+                <div class="flex flex-col p-2 bg-slate-200">
                     <div class="mt-5 md:col-span-2 md:mt-0">
                         <form action="{{ route('admin.permissions.update', $permission) }}" method="POST">
                             @csrf
@@ -42,7 +42,7 @@
                             @foreach ($permission->roles as $permission_role)
                                 <form class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md text-xs"
                                     method="POST"
-                                    action="{{ route('admin.roles.permissions.revoke', [$permission->id, $permission_role->id]) }}"
+                                    action="{{ route('admin.permissions.roles.remove', [$permission->id, $permission_role->id]) }}"
                                     onsubmit="return confirm('Are you sure?');">
                                     @csrf
                                     @method('DELETE')
