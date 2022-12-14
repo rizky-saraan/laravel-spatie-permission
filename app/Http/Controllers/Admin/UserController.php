@@ -26,6 +26,9 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if ($user->hasRole('admin')) {
+            return back()->with("message", "Cannot delete because you are admin");
+        }
         $user->delete();
         return back()->with("message", "User Deleted");
     }
@@ -43,6 +46,9 @@ class UserController extends Controller
     public function removeRole(User $user, Role $role)
     {
         if ($user->hasRole($role)) {
+            if ($role->name == "admin") {
+                return back()->with("message", "Cannot revoke role $role->name");
+            }
             $user->removeRole($role);
             return back()->with("message", "Role Removed");
         }

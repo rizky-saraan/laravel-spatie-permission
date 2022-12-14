@@ -3,9 +3,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-2">
                 <div class="flex justify-end p-2">
-                    <a href="{{ route('admin.permissions.create') }}"
-                        class="px-4 py-2 bg-green-700 hover:bg-green-500 rounded-md text-white">Create
-                        Permission</a>
+                    @can('create_permission')
+                        <a href="{{ route('admin.permissions.create') }}"
+                            class="px-4 py-2 bg-green-700 hover:bg-green-500 rounded-md text-white">Create
+                            Permission</a>
+                    @endcan
                 </div>
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -33,17 +35,21 @@
                                                 <td>
                                                     <div class="flex justify-end">
                                                         <div class="flex space-x-2">
-                                                            <a href="{{ route('admin.permissions.edit', $permission->id) }}"
-                                                                class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Edit</a>
-                                                            <form
-                                                                class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md"
-                                                                method="POST"
-                                                                action="{{ route('admin.permissions.destroy', $permission->id) }}"
-                                                                onsubmit="return confirm('Are you sure?');">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit">Delete</button>
-                                                            </form>
+                                                            @can('update_permission')
+                                                                <a href="{{ route('admin.permissions.edit', $permission->id) }}"
+                                                                    class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Edit</a>
+                                                            @endcan
+                                                            @can('delete_permission')
+                                                                <form
+                                                                    class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md"
+                                                                    method="POST"
+                                                                    action="{{ route('admin.permissions.destroy', $permission->id) }}"
+                                                                    onsubmit="return confirm('Are you sure?');">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit">Delete</button>
+                                                                </form>
+                                                            @endcan
                                                         </div>
                                                     </div>
                                                 </td>

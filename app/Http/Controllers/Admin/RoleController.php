@@ -11,7 +11,7 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $roles = Role::whereNotIn('name', ['admin'])->get();
+        $roles = Role::all();
         return view('admin.roles.index', compact("roles"));
     }
 
@@ -42,6 +42,10 @@ class RoleController extends Controller
 
     public function destroy(Role $role)
     {
+        if ($role->name == "admin") {
+            return back()->with("message", "Cannot revoke role $role->name");
+        }
+
         $role->delete();
         return back()->with("message", "Role Deleted");
     }
