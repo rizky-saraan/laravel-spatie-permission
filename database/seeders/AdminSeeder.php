@@ -24,6 +24,6 @@ class AdminSeeder extends Seeder
         ]);
 
         // role writer dan admin diberikan akses ke model user
-        $userAdmin->assignRole('writer', 'admin');
+        $userAdmin->assignRole('admin');
     }
 }

@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\AdminSeeder;
+use Database\Seeders\NavigationSeeder;
+use Database\Seeders\PermissionSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +19,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([RoleSeeder::class, AdminSeeder::class, UserSeeder::class]);
+        $this->call([PermissionSeeder::class, RoleSeeder::class, AdminSeeder::class, UserSeeder::class, NavigationSeeder::class]);
     }
 }

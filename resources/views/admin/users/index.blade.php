@@ -41,11 +41,11 @@
                                                 <td>
                                                     <div class="flex justify-end">
                                                         <div class="flex space-x-2">
-                                                            @can('assign_user')
+                                                            @can('assign admin/user')
                                                                 <a href="{{ route('admin.users.show', $user->id) }}"
                                                                     class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Roles</a>
                                                             @endcan
-                                                            @can('delete_user')
+                                                            @can('delete admin/user')
                                                                 <form
                                                                     class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md"
                                                                     method="POST"

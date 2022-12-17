@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-2">
                 <div class="flex justify-end p-2">
-                    @can('create_role')
+                    @can('create admin/roles')
                         <a href="{{ route('admin.roles.create') }}"
                             class="px-4 py-2 bg-green-700 hover:bg-green-500 rounded-md text-white">Create
                             Role</a>
@@ -35,11 +35,11 @@
                                                 <td>
                                                     <div class="flex justify-end">
                                                         <div class="flex space-x-2">
-                                                            @can('update_role')
+                                                            @can('update admin/roles')
                                                                 <a href="{{ route('admin.roles.edit', $role->id) }}"
                                                                     class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Edit</a>
                                                             @endcan
-                                                            @can('delete_role')
+                                                            @can('delete admin/roles')
                                                                 <form
                                                                     class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md"
                                                                     method="POST"
